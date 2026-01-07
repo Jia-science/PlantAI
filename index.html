@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PlantAI</title>
+</head>
+<body>
+  <h1>PlantAI</h1>
+</body>
+</html>
+let advice = "";
+
+// Check if the top prediction is "Healthy"
+if (topPrediction.className === "Healthy") {
+    const percent = topPrediction.probability * 100; // convert to percentage
+    if (percent >= 75 && percent <= 100) {
+        advice = "Your plant is healthy! Keep caring for it as usual.";
+    } else if (percent >= 55 && percent < 75) {
+        advice = "Your plant is overall healthy, but could use some added nutrition. Try using fertilizer.";
+    } else {
+        advice = "Healthy level is low.";
+    }
+} else if (topPrediction.className === "Magnesium Deficiency") {
+    advice = "Your plant has magnesium deficiency. Apply Epsom salt.";
+} else {
+    advice = "Advice not available for this class.";
+}
+
+document.getElementById("advice").innerText = `Advice: ${advice}`;
